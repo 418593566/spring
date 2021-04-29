@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.viki.mapper.UserMapper">
+    <resultMap id="BaseUser" type="com.viki.entity.User">
+        <result column="U_name" property="name"/>
+        <result column="U_password" property="password"/>
+    </resultMap>
+
+    <sql id="In_user">
+         id,U_name,U_password
+    </sql>
+
+    <select id="query" resultMap="BaseUser">
+        select
+        <include refid="In_user"/>
+        from user
+    </select>
+</mapper>

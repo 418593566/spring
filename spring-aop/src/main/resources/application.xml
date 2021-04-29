@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userImpl" class="com.yifan.dao.impl.UserDaoImpl"/>
+    <bean id="Belog" class="com.yifan.config.BeLeg"/>
+    <bean id="log" class="com.yifan.config.Log"/>
+
+    <!--   第三种方法 -->
+    <bean id="an" class="com.yifan.diy.AnnocationPointCut"/>
+    <!--   开启注解支持 -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- 第一种方法  -->
+    <!--    <aop:config>-->
+    <!--        &lt;!&ndash;   切入点-->
+    <!--               execution : 要执行的位置-->
+    <!--                |第一个 * —— 通配 随便率性返回值类型|-->
+    <!--                |第二个 * —— 通配包com.evan.crm.service下的随便率性class|-->
+    <!--                |第三个 * —— 通配包com.evan.crm.service下的随便率性class的随便率性办法|-->
+    <!--                |第四个 .. —— 通配 办法可以有0个或多个参数| &ndash;&gt;-->
+    <!--        <aop:pointcut id="pointcut" expression="execution(* com.yifan.dao.impl.UserDaoImpl.*(..))"/>-->
+    <!--        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>-->
+    <!--        <aop:advisor advice-ref="Belog" pointcut-ref="pointcut"/>-->
+    <!--    </aop:config>-->
+
+    <bean id="diy" class="com.yifan.diy.CustomProxy"/>
+
+    <!--    第二种方法   -->
+    <!--        <aop:config>-->
+    <!--            <aop:aspect ref="diy">-->
+    <!--&lt;!&ndash;                切入点&ndash;&gt;-->
+    <!--                <aop:pointcut id="point" expression="execution(* com.yifan.dao.impl.UserDaoImpl.*(..))"/>-->
+    <!--                <aop:before method="before" pointcut-ref="point"/>-->
+    <!--                <aop:after method="after" pointcut-ref="point"/>-->
+    <!--            </aop:aspect>-->
+    <!--        </aop:config>-->
+
+</beans>

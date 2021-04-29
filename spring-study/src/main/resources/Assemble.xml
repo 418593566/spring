@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="pig" class="com.yifan.entity.Pig"/>
+    <bean id="cat" class="com.yifan.entity.Cat"/>
+
+    <bean id="person" class="com.yifan.entity.Person">
+        <property name="name" value="战歌"/>
+        <property name="cat" ref="cat"/>
+        <property name="pig" ref="pig"/>
+    </bean>
+
+    <!--   自动装配
+            autpwire byName 找class 类中必须有 setxxx 后面值对应的bean id(唯一)
+                     byType 容器中恰好存在一个该属性类型的bean class(唯一)
+                     -->
+    <bean id="pson" class="com.yifan.entity.Person" p:name="拉克丝" autowire="byType"/>
+
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <import resource="spring-config.xml"/>
+
+    <bean id="userMapper" class="com.viki.mapper.impl.UserMapperImpl">
+        <property name="sqlSessionTemplate" ref="sqlSession"/>
+    </bean>
+    <bean id="userMapper2" class="com.viki.mapper.impl.UserMapperImpl2">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean id="user" class="com.viki.entity.User">
+        <property name="name" value="张飞你"/>
+        <property name="password" value="144578"/>
+    </bean>
+</beans>

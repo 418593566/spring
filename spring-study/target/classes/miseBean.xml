@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mise" class="com.yifan.entity.Mise">
+        <property name="name" value="小明"/>
+        <property name="books">
+            <set>
+                <value>红楼梦</value>
+                <value>西游记</value>
+                <value>水浒传</value>
+            </set>
+        </property>
+        <property name="card">
+            <map>
+                <entry key="身份证" value="20123154565"/>
+                <entry key="电话" value="017420524"/>
+            </map>
+        </property>
+        <property name="hobby">
+            <list>
+                <value>吉他</value>
+                <value>游戏</value>
+            </list>
+        </property>
+        <property name="ss">
+            <props>
+                <prop key="syp">xixi</prop>
+            </props>
+        </property>
+
+        <property name="wife">
+            <null/>
+        </property>
+        <property name="games">
+            <array>
+                <value>lol</value>
+                <value>cf</value>
+                <value>cs.go</value>
+            </array>
+        </property>
+    </bean>
+
+
+
+</beans>

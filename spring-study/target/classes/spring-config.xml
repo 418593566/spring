@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--  bean 就类似 new 对象
+          id =  属性名
+          class  =  new 的类型
+          必须要有set方法
+          spring是通过set 来注入的-->
+    <bean id="user" class="com.yifan.entity.User">
+        <property name="name" value="张三"/>
+    </bean>
+
+    <bean id="netty" class="com.yifan.mapper.impl.NettyImpl"/>
+    <bean id="mysql" class="com.yifan.mapper.impl.UserDaoImpl"/>
+
+    <!--    ref  引用创建好的对象
+            value 具体的-->
+    <bean id="ServiceImpl" class="com.yifan.service.serviceImpl.UserServiceImpl">
+        <property name="userDao" ref="netty"/>
+    </bean>
+
+
+    <!--   ioc创建 对象的方式 -->
+    <bean id="Book" class="com.yifan.entity.Book">
+        <constructor-arg index="0" value="活着"/>
+        <constructor-arg index="1" value="100"/>
+    </bean>
+
+    <!--    scope singleton(单列模式) 全局一个
+            -->
+    <bean id="userTest" class="com.yifan.entity.User" c:name="张杀杀杀" scope="singleton"/>
+    <!--    原型模式
+            每次都会创建一个全新的bean实列-->
+    <bean id="userText" class="com.yifan.entity.User" p:name="史蒂夫" scope="prototype"/>
+</beans>
